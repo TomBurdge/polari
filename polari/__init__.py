@@ -18,8 +18,6 @@ else:
     lib = Path(__file__).parent
 
 ## TODO : move different behaviours into own name spaces
-## (see how abstractqqq did it)
-
 
 # def what_lang_reliable(expr: IntoExpr) -> pl.Expr:
 #     expr = parse_into_expr(expr)
