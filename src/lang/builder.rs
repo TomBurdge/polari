@@ -24,9 +24,6 @@ fn get_language_code(language_name: &str) -> Result<Lang, PolarsError> {
     })
 }
 
-pub fn process_language_list(lang_list: &Vec<String>) -> Result<Vec<Lang>, PolarsError> {
-    lang_list
-        .iter()
-        .map(|s| get_language_code(s))
-        .collect()
+pub fn process_language_list(lang_list: &[String]) -> Result<Vec<Lang>, PolarsError> {
+    lang_list.iter().map(|s| get_language_code(s)).collect()
 }
