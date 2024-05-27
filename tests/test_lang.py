@@ -57,13 +57,11 @@ def test_which_lang(
     test_eager = df.select(
         language=detect_lang(
             "text",
-            **{
-                "algorithm": algorithm,
-                "include_langs": include_langs,
-                "exclude_langs": exclude_langs,
-                "in_parallel": in_parallel,
-                "low_accuracy": low_accuracy,
-            },
+            algorithm=algorithm,
+            include_langs=include_langs,
+            exclude_langs=exclude_langs,
+            in_parallel=in_parallel,
+            low_accuracy=low_accuracy,
         )
     )
     test_lazy = (
@@ -71,13 +69,11 @@ def test_which_lang(
         .select(
             language=detect_lang(
                 "text",
-                **{
-                    "algorithm": algorithm,
-                    "include_langs": include_langs,
-                    "exclude_langs": exclude_langs,
-                    "in_parallel": in_parallel,
-                    "low_accuracy": low_accuracy,
-                },
+                algorithm=algorithm,
+                include_langs=include_langs,
+                exclude_langs=exclude_langs,
+                in_parallel=in_parallel,
+                low_accuracy=low_accuracy,
             ),
         )
         .collect()
@@ -131,12 +127,10 @@ def test_detect_lang_confidence(
         test_eager = df.select(
             confidence=detect_lang_confidence(
                 "text",
-                **{
-                    "algorithm": algorithm,
-                    "include_langs": include_langs,
-                    "exclude_langs": exclude_langs,
-                    "low_accuracy": low_accuracy,
-                },
+                algorithm=algorithm,
+                include_langs=include_langs,
+                exclude_langs=exclude_langs,
+                low_accuracy=low_accuracy,
             ),
         )
         test_lazy = (
@@ -144,12 +138,10 @@ def test_detect_lang_confidence(
             .select(
                 confidence=detect_lang_confidence(
                     "text",
-                    **{
-                        "algorithm": algorithm,
-                        "include_langs": include_langs,
-                        "exclude_langs": exclude_langs,
-                        "low_accuracy": low_accuracy,
-                    },
+                    algorithm=algorithm,
+                    include_langs=include_langs,
+                    exclude_langs=exclude_langs,
+                    low_accuracy=low_accuracy,
                 ),
             )
             .collect()
