@@ -1,7 +1,6 @@
 mod lang;
 mod script;
 mod sentiment;
-mod utils;
 
 #[cfg(target_os = "linux")]
 use jemallocator::Jemalloc;
