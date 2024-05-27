@@ -1,7 +1,6 @@
 use isolang::Language as IsoLanguage;
-use lingua::{IsoCode639_3, Language};
+use lingua::Language;
 use polars::prelude::*;
-use std::str::FromStr;
 use whatlang::Lang;
 
 pub fn process_language_list_lingua(langs: &[String]) -> Result<Vec<Language>, PolarsError> {
@@ -27,7 +26,7 @@ fn get_language_code(language_name: &str) -> Result<Lang, PolarsError> {
 
 pub fn process_language_list(lang_list: &Vec<String>) -> Result<Vec<Lang>, PolarsError> {
     lang_list
-        .into_iter()
-        .map(|s| get_language_code(&s))
+        .iter()
+        .map(|s| get_language_code(s))
         .collect()
 }

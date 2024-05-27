@@ -56,10 +56,10 @@ impl Algorithm {
                 exclude_langs: kwargs.exclude_langs.clone()
             }),
             "lingua" => Ok(Algorithm::Lingua {
-                low_accuracy: kwargs.low_accuracy.clone(),
+                low_accuracy: kwargs.low_accuracy,
                 include_langs: kwargs.include_langs.clone(),
                 exclude_langs: kwargs.exclude_langs.clone(),
-                in_parallel: kwargs.in_parallel.clone(),
+                in_parallel: kwargs.in_parallel,
             }),
             "which_lang" => Ok(Algorithm::WhichLang),
             _ => Err(format!(

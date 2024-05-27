@@ -48,7 +48,7 @@ impl ScoreType {
 #[polars_expr(output_type=String)]
 fn get_sentiment(inputs: &[Series], kwargs: AddOutputTypeKwarg) -> PolarsResult<Series> {
     let score_type_arg = &kwargs.score_type;
-    let score_type = ScoreType::from_str(&score_type_arg)?.as_str();
+    let score_type = ScoreType::from_str(score_type_arg)?.as_str();
     let ca: &StringChunked = inputs[0].str()?;
     let analyzer = SentimentIntensityAnalyzer::new();
     let scores: Vec<Option<f64>> = ca
