@@ -10,9 +10,7 @@ use jemallocator::Jemalloc;
 #[cfg(target_os = "linux")]
 static ALLOC: Jemalloc = Jemalloc;
 
-use pyo3::types::PyModule;
-use pyo3::{pymodule, PyResult, Python};
-
+use pyo3::{pymodule, types::PyModule, Bound, PyResult, Python};
 // TODO:
 // add name -> native name/code name with a crate.
 // re-add return code option
@@ -26,7 +24,6 @@ use pyo3::{pymodule, PyResult, Python};
 // TODO: create tokenizer module (from polars ds issue)
 
 #[pymodule]
-fn polari(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add("__version__", env!("CARGO_PKG_VERSION"))?;
+fn polari(_py: Python<'_>, _m: &Bound<'_, PyModule>) -> PyResult<()> {
     Ok(())
 }
