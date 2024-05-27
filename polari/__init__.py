@@ -43,7 +43,7 @@ def detect_lang(
 ) -> pl.Expr:
     expr = parse_into_expr(expr)
     return expr.register_plugin(
-        lib=lib,
+        lib=lib,  # type: ignore
         symbol="detect_language",
         is_elementwise=True,
         kwargs={
@@ -66,7 +66,7 @@ def detect_lang_confidence(
 ) -> pl.Expr:
     expr = parse_into_expr(expr)
     return expr.register_plugin(
-        lib=lib,
+        lib=lib,  # type: ignore
         symbol="detect_language_confidence",
         is_elementwise=True,
         kwargs={
@@ -82,7 +82,7 @@ def detect_lang_confidence(
 def detect_script(expr: IntoExpr) -> pl.Expr:
     expr = parse_into_expr(expr)
     return expr.register_plugin(
-        lib=lib,
+        lib=lib,  # type: ignore
         symbol="detect_script",
         is_elementwise=True,
     )
@@ -91,7 +91,7 @@ def detect_script(expr: IntoExpr) -> pl.Expr:
 def get_sentiment(expr: IntoExpr, output_type: str) -> pl.Expr:
     expr = parse_into_expr(expr)
     return expr.register_plugin(
-        lib=lib,
+        lib=lib,  # type: ignore
         symbol="get_sentiment",
         is_elementwise=True,
         kwargs={"score_type": output_type},
