@@ -1,0 +1,5 @@
+polars
+maturin[patchelf]
+ruff
+pytest
+mypy
