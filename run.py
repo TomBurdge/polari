@@ -120,7 +120,7 @@ if __name__ == "__main__":
         # polari.detect_script("text").alias("script"),
         # polari.detect_lang_confidence("text",algorithm="what_lang", include_langs=include_langs).alias("what_lang_confidence"),
         # polari.detect_lang_confidence("text", algorithm="lingua", include_langs=include_langs).alias("lingua_lang_confidence"),
-        polari.sentiment("text", output_type="compound").alias("lingua_lang_confidence"),
+        polari.get_sentiment("text", output_type="compound").alias("lingua_lang_confidence"),
 
     ).collect()
     print(lf)
