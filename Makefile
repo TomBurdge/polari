@@ -20,10 +20,3 @@ pre-commit: .venv
 
 test: .venv
 	.venv/bin/python -m pytest tests
-
-run: install
-	source .venv/bin/activate && python run.py
-
-run-release: install-release
-	source .venv/bin/activate && python run.py
-
