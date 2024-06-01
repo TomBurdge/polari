@@ -1,4 +1,4 @@
-polars==0.20.30
+polars==0.20.31
 maturin[patchelf]==1.5.1
 ruff==0.4.4
 pytest==8.2.0
