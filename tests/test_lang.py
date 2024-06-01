@@ -86,8 +86,8 @@ def test_which_lang(
         schema={"language": pl.Utf8},
     )
 
-    assert_frame_equal(test_eager, exp, check_dtype=False)
-    assert_frame_equal(test_lazy, exp, check_dtype=False)
+    assert_frame_equal(test_eager, exp, check_dtypes=False)
+    assert_frame_equal(test_lazy, exp, check_dtypes=False)
 
 
 @pytest.mark.parametrize(
