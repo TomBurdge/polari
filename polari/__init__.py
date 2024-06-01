@@ -4,6 +4,7 @@ from pathlib import Path
 from typing import TYPE_CHECKING, List
 
 import polars as pl
+from polars.plugins import register_plugin_function
 
 from polari.utils import parse_into_expr, parse_version
 
@@ -17,15 +18,8 @@ if parse_version(pl.__version__) < parse_version("0.20.16"):
 else:
     lib = Path(__file__).parent
 
-## TODO : move different behaviours into own name spaces
-
-# def what_lang_reliable(expr: IntoExpr) -> pl.Expr:
-#     expr = parse_into_expr(expr)
-#     return expr.register_plugin(
-#         lib=lib,
-#         symbol="what_lang_reliable",
-#         is_elementwise=True,
-#     )
+# more plugin ideas: units converter. runtime_units (or other)
+# polars faker: creates fake data with rust faker crate
 
 
 def capitalize_langs(langs: List[str]) -> List[str]:
@@ -42,9 +36,10 @@ def detect_lang(
     low_accuracy: bool = False,
 ) -> pl.Expr:
     expr = parse_into_expr(expr)
-    return expr.register_plugin(
-        lib=lib,  # type: ignore
-        symbol="detect_language",
+    return register_plugin_function(
+        plugin_path=lib,  # type: ignore
+        function_name="detect_language",
+        args=expr,
         is_elementwise=True,
         kwargs={
             "algorithm": algorithm,
@@ -65,9 +60,10 @@ def detect_lang_confidence(
     low_accuracy: bool = False,
 ) -> pl.Expr:
     expr = parse_into_expr(expr)
-    return expr.register_plugin(
-        lib=lib,  # type: ignore
-        symbol="detect_language_confidence",
+    return register_plugin_function(
+        plugin_path=lib,  # type: ignore
+        function_name="detect_language_confidence",
+        args=expr,
         is_elementwise=True,
         kwargs={
             "algorithm": algorithm,
@@ -81,18 +77,20 @@ def detect_lang_confidence(
 
 def detect_script(expr: IntoExpr) -> pl.Expr:
     expr = parse_into_expr(expr)
-    return expr.register_plugin(
-        lib=lib,  # type: ignore
-        symbol="detect_script",
+    return register_plugin_function(
+        plugin_path=lib,  # type: ignore
+        function_name="detect_script",
+        args=expr,
         is_elementwise=True,
     )
 
 
 def get_sentiment(expr: IntoExpr, output_type: str) -> pl.Expr:
     expr = parse_into_expr(expr)
-    return expr.register_plugin(
-        lib=lib,  # type: ignore
-        symbol="get_sentiment",
+    return register_plugin_function(
+        plugin_path=lib,  # type: ignore
+        function_name="get_sentiment",
+        args=expr,
         is_elementwise=True,
         kwargs={"score_type": output_type},
     )
