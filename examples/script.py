@@ -3,7 +3,7 @@ from time import time
 from polars import Config
 from examples.utils import load_aya
 
-rows = 50_000
+rows = 5_000
 rows_str = "{:,}".format(rows)
 
 # set up the LazyFrame
@@ -12,9 +12,8 @@ lf = load_aya(limit=rows, language_subset=None)
 print(f"""
     Got the dataset!
 
-    Let's time how long it takes to detect the sentiment for {rows_str} rows, just for fun...
-
-      """)
+    Let's time how long it takes to detect the script for {rows_str} rows, just for fun...
+    """)
 ts = time()
 df = lf.select(
     "inputs",
@@ -24,12 +23,11 @@ df = lf.select(
 te = time()
 total_time = te - ts
 
-Config.set_tbl_hide_dataframe_shape(True)
-with Config(fmt_str_lengths=100):
-    print(f"""
-    Processing {rows_str} rows took {total_time} seconds.
+Config(fmt_str_lengths=100).set_tbl_hide_dataframe_shape(True)
+print(f"""
+Processing {rows_str} rows took {total_time} seconds.
 
-    Here's the head of the df:
+Here's the head of the df:
 
 {df.head(10)}
-    """)
+""")

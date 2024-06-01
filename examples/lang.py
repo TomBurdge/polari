@@ -3,7 +3,7 @@ from time import time
 from polars import Config, col
 from examples.utils import load_aya
 
-rows = 50_000
+rows = 5_000
 rows_str = "{:,}".format(rows)
 
 # here are the languages that whichlang supports
@@ -32,7 +32,7 @@ lf = load_aya(limit=rows, language_subset=languages)
 print(f"""
     Got the dataset!
 
-    Let's time how long it takes to detect the sentiment for {rows_str} rows, just for fun...
+    Let's time how long it takes to detect the language for {rows_str} rows, just for fun...
 
       """)
 ts = time()
@@ -44,14 +44,14 @@ df = lf.select(
 te = time()
 total_time = te - ts
 
-Config.set_tbl_hide_dataframe_shape(True)
-with Config(fmt_str_lengths=100):
-    print(f"""
-    Processing {rows_str} rows took {total_time} seconds.
+Config(fmt_str_lengths=100).set_tbl_hide_dataframe_shape(True)
 
-    Here's the head of the df:
+print(f"""
+Processing {rows_str} rows took {total_time} seconds.
+
+Here's the head of the df:
 
 {df.head(10)}
 
-    This is only with whichlang, the quickest and simplest algorithm. Try it out with the others!
-    """)
+This is only with whichlang, the quickest and simplest algorithm. Try it out with the others!
+""")
