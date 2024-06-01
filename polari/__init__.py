@@ -29,7 +29,7 @@ def capitalize_langs(langs: List[str]) -> List[str]:
 def detect_lang(
     expr: IntoExpr,
     *,
-    algorithm: str,
+    algorithm: str = "which_lang",
     include_langs: List = [],
     exclude_langs: List = [],
     in_parallel: bool = False,
