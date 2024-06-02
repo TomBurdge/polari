@@ -31,11 +31,13 @@ def load_aya(
         if limit:
             dataset = dataset.limit(limit)
         lf = dataset.pl().lazy()
-    except Exception:
-        ImportError(
+    except Exception as e:
+        raise ImportError(
             "Could not load the data.",
             "You like likely do not have the extra dependencies, which do not come built-in with polari.",
             "The extra dependencies are:",
             extra_dependencies,
+            "here is the error message:",
+            e
         )
     return lf
