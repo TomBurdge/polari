@@ -5,7 +5,7 @@ extra_dependencies = """duckdb==0.10.3
 polars==0.20.30
 pyarrow==16.1.0"""
 try:
-    import duckdb  # noqa
+    import duckdb # type: ignore
 except Exception:
     ImportError(
         "Could not find the duckdb module.",
