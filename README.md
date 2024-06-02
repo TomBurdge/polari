@@ -223,7 +223,7 @@ Language detection:
 * [whichlang](https://github.com/quickwit-oss/whichlang/)
 
 Sentiment:
-* [VaderSentiment](https://github.com/cjhutto/vaderSentiment)
+* [vader-sentiment-rust](https://github.com/ckw017/vader-sentiment-rust)
 
 Polars:
 * The [Polars DataFrame library](https://github.com/pola-rs/polars).
