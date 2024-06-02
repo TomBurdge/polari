@@ -1,7 +1,7 @@
 import polari
 from time import time
 from polars import Config
-from examples.utils import load_aya
+from polari.examples.datasets import load_aya
 
 rows = 5_000
 rows_str = "{:,}".format(rows)
