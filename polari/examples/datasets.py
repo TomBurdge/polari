@@ -1,11 +1,11 @@
 import polars as pl
-from typing import Tuple
+from typing import Tuple, Union, Any
 
 extra_dependencies = """duckdb==0.10.3
 polars==0.20.30
 pyarrow==16.1.0"""
 try:
-    import duckdb
+    import duckdb  # noqa
 except Exception:
     ImportError(
         "Could not find the duckdb module.",
@@ -15,7 +15,9 @@ except Exception:
     )
 
 
-def load_aya(limit: int = None, language_subset: Tuple[str] = None) -> pl.LazyFrame:
+def load_aya(
+    limit: Union[int, Any] = None, language_subset: Union[Tuple[str], Any] = None
+) -> pl.LazyFrame:
     try:
         dataset = duckdb.sql(
             """SELECT
