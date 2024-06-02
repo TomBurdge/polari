@@ -1,9 +1,9 @@
 import polari
 from time import time
 from polars import Config, col
-from examples.utils import load_aya
+from polari.examples.datasets import load_aya
 
-rows = 5_000
+rows = 5
 rows_str = "{:,}".format(rows)
 
 # here are the languages that whichlang supports
@@ -44,7 +44,7 @@ df = lf.select(
 te = time()
 total_time = te - ts
 
-Config(fmt_str_lengths=100).set_tbl_hide_dataframe_shape(True)
+Config.set_tbl_hide_dataframe_shape(True)
 
 print(f"""
 Processing {rows_str} rows took {total_time} seconds.
