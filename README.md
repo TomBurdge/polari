@@ -21,7 +21,9 @@ If you have fun with this library, please consider donating to a charity which s
 
 Perhaps:
 * [Stonewall](https://donorbox.org/support-stonewall)
+* [The Trevor Project](https://give.thetrevorproject.org/give/583742/#!/donation/checkout)
 * [Mermaids](https://mermaidsuk.org.uk/?form=donate)
+* [Gendered Intelligence](https://genderedintelligence.co.uk/donations)
 * An organisation which supports people close to wherever you are in the world.
 
 Pull requests with further charity & organisation suggestions are welcome.[^1]
@@ -32,7 +34,7 @@ Pull requests with further charity & organisation suggestions are welcome.[^1]
 For quick setup with sample data, install the requirements in examples/example_requirements.txt
 ```ssh
 # Linux/MacOS
-python -m .venv && source .venv/bin/activate && python -m pip install polari duckdb==0.10.3 polars==0.20.30 pyarrow==16.1.0
+python -m venv .venv && source .venv/bin/activate && python -m pip install polari duckdb==0.10.3 polars==0.20.30 pyarrow==16.1.0
 ```
 Load some sample data:
 ```python
@@ -190,9 +192,9 @@ lf = (
 df = lf.select(
     "text",
     polari.get_sentiment("text", output_type="compound").alias("sentiment"),
-    polari.get_sentiment("text", output_type="pos").alias("sentiment"),
-    polari.get_sentiment("text", output_type="neu").alias("sentiment"),
-    polari.get_sentiment("text", output_type="neg").alias("sentiment"),
+    polari.get_sentiment("text", output_type="pos").alias("pos"),
+    polari.get_sentiment("text", output_type="neu").alias("neu"),
+    polari.get_sentiment("text", output_type="neg").alias("neg"),
     "rating",
 ).collect()
 
